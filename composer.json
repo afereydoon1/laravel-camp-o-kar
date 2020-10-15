@@ -1,0 +1,80 @@
+{
+    "name": "tefoh/laravel-vue-spa-boilerplate",
+    "type": "project",
+    "description": "a spa boilerplate build with laravel and vuejs (persian and ltr support)",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "cviebrock/eloquent-sluggable": "dev-support7",
+        "doctrine/dbal": "^2.10",
+        "fideloper/proxy": "^4.0",
+        "hekmatinasser/verta": "dev-support7",
+        "intervention/image": "^2.5",
+        "laravel/framework": "^7.0",
+        "laravel/passport": "^8.0",
+        "laravel/telescope": "^3.1",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "nyholm/psr7": "^1.2",
+        "zarinpal/zarinpal": "^1.3"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/Tefoh/verta"
+    },{
+        "type": "vcs",
+        "url": "https://github.com/Tefoh/eloquent-sluggable"
+    }],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}
